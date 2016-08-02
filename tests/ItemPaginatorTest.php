@@ -10,43 +10,44 @@ class ItemPaginatorTest extends BaseTestCase
     {
         $limit = 2;
 
-        (new User())->create([
+
+        // Yes, factories are better.
+        $user = new User();
+
+        $user->create([
           'id'       => 100,
           'name'     => 'test',
           'email'    => 'test@test.com',
           'password' => 'test',
         ]);
 
-
-        (new User())->create([
+        $user->create([
           'id'       => 190,
           'name'     => 't0est',
           'email'    => 't0est@test.com',
           'password' => 'te0st',
         ]);
 
-        (new User())->create([
+        $user->create([
           'id'       => 210,
           'name'     => 't90est',
           'email'    => 't09est@test.com',
           'password' => 'te90st',
         ]);
 
-        (new User())->create([
+        $user->create([
           'name'     => 't0uest',
           'email'    => 't0eust@test.com',
           'password' => 'te0st',
         ]);
 
-        (new User())->create([
+        $user->create([
           'name'     => 'trader_rocr100uest',
           'email'    => 't00eust@test.com',
           'password' => 't0e0st',
         ]);
 
-        $users = new User();
-
-        $paginated = $users->itemPaginate($limit);
+        $paginated = $user->itemPaginate($limit);
 
         $results = $paginated->toArray();
 
@@ -56,19 +57,16 @@ class ItemPaginatorTest extends BaseTestCase
         $this->assertEquals($results['next_page_url'], 'http://localhost?from=190');
         $this->assertEquals($results['prev_page_url'], null);
 
-
-        $paginated = $users->itemPaginate($limit, ['*'], 'from', 100);
+        $paginated = $user->itemPaginate($limit, ['*'], 'from', 100);
 
         $results = $paginated->toArray();
-
 
         $this->assertEquals($results['from'], 190);
         $this->assertEquals($results['to'], 210);
         $this->assertEquals($results['next_page_url'], 'http://localhost?from=210');
         $this->assertEquals($results['prev_page_url'], 'http://localhost?from=190');
 
-
-        $paginated = $users->itemPaginate($limit, ['*'], 'from', 10000);
+        $paginated = $user->itemPaginate($limit, ['*'], 'from', 10000);
 
         $results = $paginated->toArray();
         $this->assertEquals($results['from'], null);
