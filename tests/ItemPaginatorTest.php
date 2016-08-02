@@ -57,7 +57,8 @@ class ItemPaginatorTest extends BaseTestCase
         $this->assertEquals('http://localhost?from=190', $results['next_page_url']);
         $this->assertEquals(null, $results['prev_page_url']);
 
-        $paginated = $user->itemPaginate($limit, ['*'], 'from', 100);
+
+        $paginated = $user->itemPaginate($limit, ['*'], 'from', 100, 'id');
 
         $results = $paginated->toArray();
 
@@ -66,7 +67,9 @@ class ItemPaginatorTest extends BaseTestCase
         $this->assertEquals('http://localhost?from=210', $results['next_page_url']);
         $this->assertEquals('http://localhost?from=190', $results['prev_page_url']);
 
-        $paginated = $user->itemPaginate($limit, ['*'], 'from', 10000);
+        request()->merge(['from' => 1000]);
+
+        $paginated = $user->itemPaginate($limit);
 
         $results = $paginated->toArray();
         $this->assertEquals(null, $results['from']);
