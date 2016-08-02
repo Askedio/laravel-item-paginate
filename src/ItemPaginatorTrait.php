@@ -21,7 +21,7 @@ trait ItemPaginatorTrait
         $perPage = $perPage ?: $this->getPerPage();
 
         if (!$field) {
-            $field = $this->getTable() . '.id';
+            $field = $this->getTable().'.id';
         }
 
         $query->where($field, '>', $from)->take($perPage + 1);
