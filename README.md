@@ -4,7 +4,7 @@ Paginate based on last item, not page.
 [![Build Status](https://travis-ci.org/Askedio/laravel-item-paginate.svg?branch=master)](https://travis-ci.org/Askedio/laravel-item-paginate)
 [![StyleCI](https://styleci.io/repos/64736957/shield)](https://styleci.io/repos/64736957)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7b0e02f728ee495f8328c6603ec24c1b)](https://www.codacy.com/app/gcphost/laravel-item-paginate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Askedio/laravel-item-paginate&amp;utm_campaign=Badge_Grade)
-
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/7b0e02f728ee495f8328c6603ec24c1b)](https://www.codacy.com/app/gcphost/laravel-item-paginate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Askedio/laravel-item-paginate&amp;utm_campaign=Badge_Coverage)
 
 # Installation
 
@@ -12,10 +12,15 @@ Paginate based on last item, not page.
 composer require askedio/laravel-item-paginate
 ~~~
 
-Add the following trait to your base Model or Models you want to use this feature on.
+Add the following trait to your Models.
 
 ```php
 use \Askedio\ItemPaginator\ItemPaginatorTrait;
+```
+
+If you want the current_page to default to 0 instead of 1 add the following provider to `config/app.php`
+```php
+\Askedio\ItemPaginator\ItemPaginatorServiceProvider::class,
 ```
 
 

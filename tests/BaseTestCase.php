@@ -25,6 +25,8 @@ abstract class BaseTestCase extends \Illuminate\Foundation\Testing\TestCase
 
         $app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
+        $app->register(\Askedio\ItemPaginator\ItemPaginatorServiceProvider::class);
+
         return $app;
     }
 

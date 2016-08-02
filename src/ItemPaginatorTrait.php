@@ -14,7 +14,7 @@ trait ItemPaginatorTrait
      *
      * @return ItemPaginator
      */
-    public function scopeItemPaginate($query, $perPage = null, $columns = ['*'], $pageName = 'from', $from = 0, $field = 'id')
+    public function scopeItemPaginate($query, $perPage = null, $columns = ['*'], $pageName = 'from',  $from =  0, $field = 'id')
     {
         $from = $from ?: ItemPaginator::resolveCurrentPage($pageName, 0);
 

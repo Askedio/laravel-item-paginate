@@ -37,8 +37,11 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         }
 
         $this->perPage = $perPage;
+
         $this->currentPage = $this->setCurrentPage($currentPage);
+
         $this->path = $this->path != '/' ? rtrim($this->path, '/') : $this->path;
+
         $this->items = $items instanceof Collection ? $items : Collection::make($items);
 
         $this->checkForMorePages();
@@ -53,10 +56,23 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
      */
     protected function setCurrentPage($currentPage)
     {
-        $currentPage = $currentPage ?: static::resolveCurrentPage();
+        $currentPage = $currentPage ?: static::resolveCurrentPage($this->pageName, 0);
 
         return $this->isValidPageNumber($currentPage) ? (int) $currentPage : 0;
     }
+
+    /**
+     * Determine if the given value is a valid page number.
+     *
+     * @param  int  $page
+     * @return bool
+     */
+    protected function isValidPageNumber($page)
+    {
+        return $page >= 0 && filter_var($page, FILTER_VALIDATE_INT) !== false;
+    }
+
+
 
     /**
      * Check for more pages. The last item will be sliced off.
@@ -141,6 +157,7 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
     {
         return [
             'limit'         => $this->perPage(),
+            'current_page'  => $this->currentPage(),
             'next_page_url' => $this->nextPageUrl(),
             'prev_page_url' => $this->previousPageUrl(),
             'from'          => $this->firstItem(),
