@@ -14,11 +14,15 @@ trait ItemPaginatorTrait
      *
      * @return ItemPaginator
      */
-    public function scopeItemPaginate($query, $perPage = null, $columns = ['*'], $pageName = 'from', $from = 0, $field = 'id')
+    public function scopeItemPaginate($query, $perPage = null, $columns = ['*'], $pageName = 'from', $from = 0, $field = null)
     {
         $from = $from ?: ItemPaginator::resolveCurrentPage($pageName, 0);
 
         $perPage = $perPage ?: $this->getPerPage();
+
+        if (!$field) {
+            $field = $this->getTable() . '.id';
+        }
 
         $query->where($field, '>', $from)->take($perPage + 1);
 

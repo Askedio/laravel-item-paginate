@@ -40,7 +40,7 @@ dd($paginated);
 The last parameter is the field that will be used to paginate by, defaults to `id`.
 
 ```php
-itemPaginate($perPage = null, $columns = ['*'], $pageName = 'from', $from = 0, $field = 'id')
+itemPaginate($perPage = null, $columns = ['*'], $pageName = 'from', $from = 0, $field = null)
 ```
 
 # Example Output
