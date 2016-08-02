@@ -147,7 +147,8 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         return $this->items[count($this->items) - 1][$this->getField()];
     }
 
-    protected function getField() {
+    protected function getField()
+    {
         if (empty($this->field)) {
             return $this->field;
         }
