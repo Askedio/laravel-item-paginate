@@ -13,77 +13,6 @@ use JsonSerializable;
 
 class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayable, ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Jsonable, PaginatorContract
 {
-    /**
-     * Determine if there are more items in the data source.
-     *
-     * @return bool
-     */
-    protected $hasMore;
-
-    /**
-     * Create a new paginator instance.
-     *
-     * @param mixed    $items
-     * @param int      $perPage
-     * @param int|null $currentPage
-     * @param array    $options     (path, query, fragment, pageName)
-     *
-     * @return void
-     */
-    public function __construct($items, $perPage, $currentPage = null, array $options = [])
-    {
-        foreach ($options as $key => $value) {
-            $this->{$key} = $value;
-        }
-
-        $this->perPage = $perPage;
-
-        $this->currentPage = $this->setCurrentPage($currentPage);
-
-        $this->path = $this->path != '/' ? rtrim($this->path, '/') : $this->path;
-
-        $this->items = $items instanceof Collection ? $items : Collection::make($items);
-
-        $this->checkForMorePages();
-    }
-
-    /**
-     * Get the current page for the request.
-     *
-     * @param int $currentPage
-     *
-     * @return int
-     */
-    protected function setCurrentPage($currentPage)
-    {
-        $currentPage = $currentPage ?: static::resolveCurrentPage($this->pageName, 0);
-
-        return $this->isValidPageNumber($currentPage) ? (int) $currentPage : 0;
-    }
-
-    /**
-     * Determine if the given value is a valid page number.
-     *
-     * @param int $page
-     *
-     * @return bool
-     */
-    protected function isValidPageNumber($page)
-    {
-        return $page >= 0 && filter_var($page, FILTER_VALIDATE_INT) !== false;
-    }
-
-    /**
-     * Check for more pages. The last item will be sliced off.
-     *
-     * @return void
-     */
-    protected function checkForMorePages()
-    {
-        $this->hasMore = count($this->items) > ($this->perPage);
-
-        $this->items = $this->items->slice(0, $this->perPage);
-    }
 
     /**
      * Get the URL for the next page.
@@ -107,16 +36,6 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         if ($this->currentPage() > 1) {
             return $this->url($this->firstItem());
         }
-    }
-
-    /**
-     * Determine if there are more items in the data source.
-     *
-     * @return bool
-     */
-    public function hasMorePages()
-    {
-        return $this->hasMore;
     }
 
     /**
@@ -147,7 +66,8 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         return $this->items[count($this->items) - 1][$this->getField()];
     }
 
-    protected function getField() {
+    protected function getField()
+    {
         if (!preg_match('/\.(.*)/', $this->field, $matches)) {
             return $this->field;
         }
