@@ -7,13 +7,11 @@ use Countable;
 use Illuminate\Contracts\Pagination\Paginator as PaginatorContract;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
-use Illuminate\Support\Collection;
 use IteratorAggregate;
 use JsonSerializable;
 
 class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayable, ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Jsonable, PaginatorContract
 {
-
     /**
      * Get the URL for the next page.
      *
