@@ -147,16 +147,7 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         return $this->items[count($this->items) - 1][$this->getField()];
     }
 
-<<<<<<< HEAD
     protected function getField() {
-=======
-    protected function getField()
-    {
-        if (empty($this->field)) {
-            return $this->field;
-        }
-
->>>>>>> master
         if (!preg_match('/\.(.*)/', $this->field, $matches)) {
             return $this->field;
         }
