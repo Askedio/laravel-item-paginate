@@ -1,0 +1,36 @@
+{
+    "name": "askedio/laravel-item-paginate",
+    "description": "Paginate based on last item, not pages.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "William",
+            "email": "gcphost@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*"
+    },
+    "require-dev": {
+        "laravel/laravel": "5.2.*",
+        "fzaninotto/faker": "dev-master",
+        "phpunit/phpunit": "4.*",
+        "codacy/coverage": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Askedio\\ItemPaginator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Askedio\\ItemPaginator\\Tests\\" : "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "minimum-stability": "stable"
+}
