@@ -15,7 +15,6 @@
     },
     "require-dev": {
         "laravel/laravel": "5.2.*",
-        "fzaninotto/faker": "dev-master",
         "phpunit/phpunit": "4.*",
         "codacy/coverage": "dev-master"
     },

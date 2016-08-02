@@ -2,14 +2,12 @@
 
 namespace Askedio\ItemPaginator\Tests;
 
-use Faker\Factory;
 use Askedio\ItemPaginator\Tests\App\User;
 
 class ItemPaginatorTest extends BaseTestCase
 {
     public function testThatFilterCanUseNl2Br()
     {
-
         $limit = 2;
 
         (new User())->create([
@@ -75,7 +73,5 @@ class ItemPaginatorTest extends BaseTestCase
         $results = $paginated->toArray();
         $this->assertEquals($results['from'], null);
         $this->assertEquals($results['to'], null);
-
-
     }
 }

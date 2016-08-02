@@ -1,10 +1,15 @@
 # Laravel Item Paginator
 Paginate based on last item, not page.
 
+[![Build Status](https://travis-ci.org/Askedio/laravel-item-paginate.svg?branch=master)](https://travis-ci.org/Askedio/laravel-item-paginate)
+[![StyleCI](https://styleci.io/repos/64736957/shield)](https://styleci.io/repos/64736957)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7b0e02f728ee495f8328c6603ec24c1b)](https://www.codacy.com/app/gcphost/laravel-item-paginate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Askedio/laravel-item-paginate&amp;utm_campaign=Badge_Grade)
+
+
 # Installation
 
 ~~~
-composer install..
+composer require askedio/laravel-item-paginate
 ~~~
 
 Add the following trait to your base Model or Models you want to use this feature on.
