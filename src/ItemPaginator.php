@@ -26,7 +26,6 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         }
     }
 
-
     /**
      * Get the number of the first item in the slice.
      *

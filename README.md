@@ -43,12 +43,14 @@ The last parameter is the field that will be used to paginate by, defaults to `i
 itemPaginate($perPage = null, $columns = ['*'], $pageName = 'from', $from = 0, $field = null)
 ```
 
+# ORDER BY DESC
+If you want to decend your sorting you'll want to use `itemPaginateDesc` instead of `itemPaginate`. The first page will add an extra query to find the last item.
+
 # Example Output
 ```php
 array:6 [
   "limit" => 2
   "next_page_url" => "http://localhost?from=190"
-  "prev_page_url" => null
   "from" => 100
   "to" => 190
   "data" => array:2 [
