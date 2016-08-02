@@ -130,7 +130,7 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
             return;
         }
 
-        return $this->items[0][$this->field];
+        return $this->items[0][$this->getField()];
     }
 
     /**
@@ -144,7 +144,19 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
             return;
         }
 
-        return $this->items[count($this->items) - 1][$this->field];
+        return $this->items[count($this->items) - 1][$this->getField()];
+    }
+
+    protected function getField() {
+        if (empty($this->field)) {
+            return $this->field;
+        }
+
+        if (!preg_match('/\.(.*)/', $this->field, $matches)) {
+            return $this->field;
+        }
+
+        return $matches[1];
     }
 
     /**
