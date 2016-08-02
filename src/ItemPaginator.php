@@ -64,15 +64,14 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
     /**
      * Determine if the given value is a valid page number.
      *
-     * @param  int  $page
+     * @param int $page
+     *
      * @return bool
      */
     protected function isValidPageNumber($page)
     {
         return $page >= 0 && filter_var($page, FILTER_VALIDATE_INT) !== false;
     }
-
-
 
     /**
      * Check for more pages. The last item will be sliced off.
