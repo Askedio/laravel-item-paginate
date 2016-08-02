@@ -26,17 +26,6 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         }
     }
 
-    /**
-     * Get the URL for the previous page.
-     *
-     * @return string|null
-     */
-    public function previousPageUrl()
-    {
-        if ($this->currentPage() > 1) {
-            return $this->url($this->firstItem());
-        }
-    }
 
     /**
      * Get the number of the first item in the slice.
@@ -86,7 +75,6 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
             'limit'         => $this->perPage(),
             'current_page'  => $this->currentPage(),
             'next_page_url' => $this->nextPageUrl(),
-            'prev_page_url' => $this->previousPageUrl(),
             'from'          => $this->firstItem(),
             'to'            => $this->lastItem(),
             'data'          => $this->items->toArray(),
