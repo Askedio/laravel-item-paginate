@@ -2,15 +2,14 @@
 
 namespace Askedio\ItemPaginator;
 
-use Countable;
 use ArrayAccess;
-use JsonSerializable;
-use IteratorAggregate;
-use Illuminate\Support\Collection;
-use Illuminate\Contracts\Support\Jsonable;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Pagination\Presenter;
+use Countable;
 use Illuminate\Contracts\Pagination\Paginator as PaginatorContract;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Support\Collection;
+use IteratorAggregate;
+use JsonSerializable;
 
 class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayable, ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Jsonable, PaginatorContract
 {
@@ -24,10 +23,11 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
     /**
      * Create a new paginator instance.
      *
-     * @param  mixed  $items
-     * @param  int  $perPage
-     * @param  int|null  $currentPage
-     * @param  array  $options (path, query, fragment, pageName)
+     * @param mixed    $items
+     * @param int      $perPage
+     * @param int|null $currentPage
+     * @param array    $options     (path, query, fragment, pageName)
+     *
      * @return void
      */
     public function __construct($items, $perPage, $currentPage = null, array $options = [])
@@ -47,7 +47,8 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
     /**
      * Get the current page for the request.
      *
-     * @param  int  $currentPage
+     * @param int $currentPage
+     *
      * @return int
      */
     protected function setCurrentPage($currentPage)
@@ -103,7 +104,6 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         return $this->hasMore;
     }
 
-
     /**
      * Get the number of the first item in the slice.
      *
@@ -114,8 +114,10 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         if (count($this->items) === 0) {
             return;
         }
+
         return $this->items[0][$this->field];
     }
+
     /**
      * Get the number of the last item in the slice.
      *
@@ -126,9 +128,9 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
         if (count($this->items) === 0) {
             return;
         }
-        return $this->items[count($this->items)-1][$this->field];
-    }
 
+        return $this->items[count($this->items) - 1][$this->field];
+    }
 
     /**
      * Get the instance as an array.
@@ -138,12 +140,12 @@ class ItemPaginator extends \Illuminate\Pagination\Paginator implements Arrayabl
     public function toArray()
     {
         return [
-            'limit' => $this->perPage(),
+            'limit'         => $this->perPage(),
             'next_page_url' => $this->nextPageUrl(),
             'prev_page_url' => $this->previousPageUrl(),
-            'from' => $this->firstItem(),
-            'to' => $this->lastItem(),
-            'data' => $this->items->toArray(),
+            'from'          => $this->firstItem(),
+            'to'            => $this->lastItem(),
+            'data'          => $this->items->toArray(),
         ];
     }
 }

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-
     use \Askedio\ItemPaginator\ItemPaginatorTrait;
 
     protected $table = 'users';
