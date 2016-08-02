@@ -6,7 +6,7 @@ use Askedio\ItemPaginator\Tests\App\User;
 
 class ItemPaginatorTest extends BaseTestCase
 {
-    public function testThatFilterCanUseNl2Br()
+    public function testPaginator()
     {
         $limit = 2;
 
@@ -52,24 +52,24 @@ class ItemPaginatorTest extends BaseTestCase
         $results = $paginated->toArray();
 
         $this->assertInstanceOf('Askedio\ItemPaginator\ItemPaginator', $paginated);
-        $this->assertEquals($results['from'], 100);
-        $this->assertEquals($results['to'], 190);
-        $this->assertEquals($results['next_page_url'], 'http://localhost?from=190');
-        $this->assertEquals($results['prev_page_url'], null);
+        $this->assertEquals(100, $results['from']);
+        $this->assertEquals(190, $results['to']);
+        $this->assertEquals('http://localhost?from=190', $results['next_page_url']);
+        $this->assertEquals(null, $results['prev_page_url']);
 
         $paginated = $user->itemPaginate($limit, ['*'], 'from', 100);
 
         $results = $paginated->toArray();
 
-        $this->assertEquals($results['from'], 190);
-        $this->assertEquals($results['to'], 210);
-        $this->assertEquals($results['next_page_url'], 'http://localhost?from=210');
-        $this->assertEquals($results['prev_page_url'], 'http://localhost?from=190');
+        $this->assertEquals(190, $results['from'], 190);
+        $this->assertEquals(210, $results['to'], 210);
+        $this->assertEquals('http://localhost?from=210', $results['next_page_url']);
+        $this->assertEquals('http://localhost?from=190', $results['prev_page_url']);
 
         $paginated = $user->itemPaginate($limit, ['*'], 'from', 10000);
 
         $results = $paginated->toArray();
-        $this->assertEquals($results['from'], null);
-        $this->assertEquals($results['to'], null);
+        $this->assertEquals(null, $results['from']);
+        $this->assertEquals(null, $results['to']);
     }
 }
