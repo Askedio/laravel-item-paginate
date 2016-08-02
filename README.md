@@ -1,6 +1,7 @@
 # Laravel Item Paginator
 Paginate based on last item, not page.
 
+
 [![Build Status](https://travis-ci.org/Askedio/laravel-item-paginate.svg?branch=master)](https://travis-ci.org/Askedio/laravel-item-paginate)
 [![StyleCI](https://styleci.io/repos/64736957/shield)](https://styleci.io/repos/64736957)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7b0e02f728ee495f8328c6603ec24c1b)](https://www.codacy.com/app/gcphost/laravel-item-paginate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Askedio/laravel-item-paginate&amp;utm_campaign=Badge_Grade)
@@ -74,3 +75,6 @@ array:6 [
   ]
 ]
 ```
+
+# Disclaimer
+I've only tested this with `sqlite` and `mysql` (see tests) so it may not work in every situation. I'll be using it in a "production" API and will try to find possible issues. Please report any you find.
