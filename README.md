@@ -19,7 +19,7 @@ Add the following trait to your Models.
 use \Askedio\ItemPaginator\ItemPaginatorTrait;
 ```
 
-If you want the current_page to default to 0 instead of 1 add the following provider to `config/app.php`
+Add the following provider to `config/app.php`
 ```php
 \Askedio\ItemPaginator\ItemPaginatorServiceProvider::class,
 ```
