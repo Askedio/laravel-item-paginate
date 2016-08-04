@@ -79,4 +79,6 @@ array:6 [
 ```
 
 # Disclaimer
-I've only tested this with `sqlite` and `mysql` (see tests) so it may not work in every situation. I'll be using it in a "production" API and will try to find possible issues. Please report any you find.
+### Will only sort by incremental ids.
+
+I've only tested this with `sqlite` and `mysql` (see tests) so it may not work in every situation. Please report any you find.
