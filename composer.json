@@ -11,10 +11,10 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.*"
     },
     "require-dev": {
-        "laravel/laravel": "5.2.*",
+        "laravel/laravel": "5.*",
         "phpunit/phpunit": "4.*",
         "codacy/coverage": "dev-master"
     },
